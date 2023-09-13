@@ -107,6 +107,8 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
+    nokogiri (1.15.4-aarch64-linux)
+      racc (~> 1.4)
     nokogiri (1.15.4-arm64-darwin)
       racc (~> 1.4)
     psych (5.1.0)
@@ -150,6 +152,7 @@ GEM
       psych (>= 4.0.0)
     reline (0.3.8)
       io-console (~> 0.5)
+    sqlite3 (1.6.4-aarch64-linux)
     sqlite3 (1.6.4-arm64-darwin)
     stringio (3.0.8)
     thor (1.2.2)
@@ -162,6 +165,7 @@ GEM
     zeitwerk (2.6.11)
 
 PLATFORMS
+  aarch64-linux
   arm64-darwin-22
 
 DEPENDENCIES
