@@ -12,8 +12,10 @@ $ docker compose up -d
 
 #docker 停止
 $ docker compose down
-
 ```
+
+## Webサーバーへのアクセス
+http://localhost:3010
 
 ## Rails コマンド一覧
 ```sh
