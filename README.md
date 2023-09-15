@@ -10,8 +10,11 @@ $ docker compose up
 # バックグラウンド
 $ docker compose up -d
 
-#docker 停止
+# docker 停止
 $ docker compose down
+
+# docker 再起動 gem追加などのとき
+$ docker compose restart
 ```
 
 ## Webサーバーへのアクセス
@@ -27,9 +30,16 @@ $ docker compose exec web rails db:create
 
 # migrationファイル追加
 $ docker compose exec web rails db:migrate
+
+# rails console使用時
 ```
 
 ## DB接続 コマンド
 ```sh
+# DBコンテナに入る
+$ docker-compose exec db bash
+
+# rootユーザになっている場合
+$ mysql -u root -p
 
 ```
