@@ -17,7 +17,7 @@ module Myapp
         helper_specs: false,
         routing_specs: false,
         request_specs: false
-      g.factory_bot false
+      g.factory_bot :true
       g.factory_bot dir: "spec/factories"
     end
     
