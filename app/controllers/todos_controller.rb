@@ -5,5 +5,4 @@ class TodosController < ApplicationController
     render json: @todos
   end
 
-  def 
 end
