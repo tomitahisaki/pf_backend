@@ -30,3 +30,6 @@
 
 # local setting
 .vscode
+
+# env
+.env
