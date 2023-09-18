@@ -11,6 +11,9 @@ module Myapp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
+    # api専用
+    config.api_only = true
+
     config.generators do |g|
       g.test_framework  :rspec,
         view_specs: false,
