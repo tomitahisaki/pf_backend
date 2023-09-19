@@ -60,4 +60,30 @@ RSpec.describe "Todos", type: :request do
       end
     end
   end
+
+  describe "GET /show" do
+    context "対象が存在している場合" do
+      before do
+        todo = Todo.create!(title: "勉強します", description: "基本情報技術者試験の勉強をします", status: :in_progress )
+        get todos_path(id: todo.id)
+      end
+
+      it "status確認 200を返すこと" do
+        expect(response).to have_http_status :ok
+      end
+
+      it "content_type jsonであること" do
+        expect(response.content_type).to eq ("application/json; charset=utf-8")
+      end
+    end
+
+    context "対象が存在しない場合" do
+      it "ActiveRecord::RecordNotFoundを返すこと" do
+        expect do
+          Todo.create!(title: "筋トレします", description: "上半身を鍛えるために、3分間の筋トレをやります", status: :not_started )
+          get todo_path(id: Todo.last.id + 1)
+        end.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+  end
 end
