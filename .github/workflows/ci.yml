@@ -16,7 +16,7 @@ jobs:
           - 3306:3306
         env:
           LANG: "ja_JP.UTF-8"
-          MYSQL-ROOT-PASSWORD: password
+          MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
         options: >-
           --health-cmd "mysqladmin ping"
           --health-interval 10s --health-timeout 5s 
