@@ -18,7 +18,6 @@ jobs:
         env:
           LANG: "ja_JP.UTF-8"
           MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-          MYSQL_DATABASE: db
         options: >-
           --health-cmd "mysqladmin ping"
           --health-interval 10s 
@@ -38,6 +37,8 @@ jobs:
 
       # migrationの実施
       - name: DB migration
+        env: 
+          DB_HOST: db
         run: |
           bundle exec rails db:create
           bundle exec rails db:migrate
