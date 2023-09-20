@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TodosController < ApplicationController
   def index
     render json: Todo.all
@@ -8,5 +10,4 @@ class TodosController < ApplicationController
 
     render json: todo
   end
-
 end
