@@ -18,7 +18,6 @@ jobs:
         env:
           LANG: "ja_JP.UTF-8"
           MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-          MYSQL_USER: root
           MYSQL_DATABASE: myapp_development
         options: >-
           --health-cmd "mysqladmin ping -h localhost"
