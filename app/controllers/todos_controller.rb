@@ -13,15 +13,16 @@ class TodosController < ApplicationController
 
   def create
     todo = Todo.new(todo_params)
-    
+
     if todo.save
-      render json: todo, status: :created
+      render json: todo, status: :ok
     else
-      render json: todo.error, status: :unprocessable_entity
+      render json: todo.error, status: :bad_request
     end
   end
 
   private
+
   def todo_params
     params.require(:todo).permit(:title, :description, :status)
   end

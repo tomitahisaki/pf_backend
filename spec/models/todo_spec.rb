@@ -89,7 +89,7 @@ RSpec.describe Todo do
 
       it '20を入れた場合' do
         todo.status = 20
-        expect(todo.status).to eq "done"
+        expect(todo.status).to eq 'done'
       end
     end
   end
