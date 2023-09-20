@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe Todo, type: :model do
+RSpec.describe Todo do
   describe "バリデーションテスト" do
     let(:todo){ create(:todo) }
-    
+
     context "すべて入力されている場合" do
       it "バリデーションに合格する" do
         expect(todo).to be_valid
@@ -14,7 +14,7 @@ RSpec.describe Todo, type: :model do
     context "title" do
       it "未入力の場合" do
         todo.title = ""
-        expect(todo).to be_invalid
+        expect(todo).not_to be_valid
       end
 
       it "50文字以内の場合" do
@@ -24,19 +24,19 @@ RSpec.describe Todo, type: :model do
 
       it "51文字以上の場合" do
         todo.title = "a" * 51
-        expect(todo).to be_invalid
+        expect(todo).not_to be_valid
       end
     end
 
     context "description" do
       it "未入力の場合" do
         todo.description = ""
-        expect(todo).to be_invalid
+        expect(todo).not_to be_valid
       end
 
       it "9文字の場合" do
         todo.description = "a" * 9
-        expect(todo).to be_invalid
+        expect(todo).not_to be_valid
       end
 
       it "10文字の場合" do
@@ -51,11 +51,9 @@ RSpec.describe Todo, type: :model do
 
       it "501文字の場合" do
         todo.description = "a" * 501
-        expect(todo).to be_invalid
+        expect(todo).not_to be_valid
       end
     end
-    
-    context "status" do
-    end
+
   end
 end

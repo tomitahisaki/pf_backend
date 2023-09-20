@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Todos", type: :request do
+RSpec.describe "Todos" do
   let(:todo){ create(:todo)}
 
   describe "GET /index" do
