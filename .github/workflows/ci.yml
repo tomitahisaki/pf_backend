@@ -2,7 +2,8 @@ name: Run rspec, rubocop
 
 on:
   push:
-  pull_request:
+    branches:
+      - "**"
 
 jobs:
   ci:
@@ -17,7 +18,7 @@ jobs:
         env:
           LANG: "ja_JP.UTF-8"
           MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-          MYSQL_DATABASE: databese
+          DB_HOST: db
         options: >-
           --health-cmd "mysqladmin ping"
           --health-interval 10s --health-timeout 5s 
