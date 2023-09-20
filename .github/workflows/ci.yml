@@ -10,13 +10,14 @@ jobs:
     timeout-minutes: 10
     
     services:
-      mysql:
+      db:
         image: mysql
         ports:
           - 3306:3306
         env:
           LANG: "ja_JP.UTF-8"
           MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+          MYSQL_DATABASE: databese
         options: >-
           --health-cmd "mysqladmin ping"
           --health-interval 10s --health-timeout 5s 
@@ -36,8 +37,8 @@ jobs:
       # migrationの実施
       - name: DB migration
         run: |
-          bundle exec rails db:create
-          bundle exec rails db:migrate
+          bundle exec rails db:create RAILS_ENV=test
+          bundle exec rails db:migrate RAILS_ENV=test
 
       # RSpec
       - name: Run Rspec
