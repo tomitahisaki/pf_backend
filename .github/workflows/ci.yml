@@ -22,27 +22,27 @@ jobs:
           --health-interval 10s --health-timeout 5s 
           --health-retries 10
 
-  steps:
-    # 該当ブランチをcheckout
-    - name: Checkout
-      uses: actions/checkout@v2
-    
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 3.2.0
-        bundler-cache: true
+    steps:
+      # 該当ブランチをcheckout
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.0
+          bundler-cache: true
 
-    # migrationの実施
-    - name: DB migration
-      run: |
-        bundle exec rails db:create
-        bundle exec rails db:migrate
+      # migrationの実施
+      - name: DB migration
+        run: |
+          bundle exec rails db:create
+          bundle exec rails db:migrate
 
-    # RSpec
-    - name: Run Rspec
-      run: bundle exec rspec
-    
-    # Rubocop
-    - name: Run Rubocop
-      run: bundle exec rubocop
+      # RSpec
+      - name: Run Rspec
+        run: bundle exec rspec
+      
+      # Rubocop
+      - name: Run Rubocop
+        run: bundle exec rubocop
