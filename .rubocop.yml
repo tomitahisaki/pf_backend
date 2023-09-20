@@ -1,1 +1,89 @@
 inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'db/schema.rb'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+  NewCops: enable
+
+Layout/ExtraSpacing:
+  AllowForAlignment: false
+
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/ClassLength:
+  CountAsOne: ["array", "hash"]
+
+Metrics/BlockLength:
+  CountAsOne: ["array", "hash"]
+  Exclude:
+    - 'config/**/*'
+    - 'spec/**/*'
+
+Metrics/MethodLength:
+  Max: 20
+  CountAsOne: ["array", "hash"]
+  Exclude:
+    - 'db/migrate/*'
+
+Metrics/ModuleLength:
+  CountAsOne: ["array", "hash"]
+  Exclude:
+    - 'spec/**/*'
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'test/**/*'
+
+Style/Documentation:
+  Enabled: false
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: never
+
+Style/IfUnlessModifier:
+  Exclude:
+    - 'config/routes.rb'
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+
+Rails/UnknownEnv:
+  Environments:
+    - development
+    - test
+    - production
+    - staging
+
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 6
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+Layout/LineLength:
+  Exclude:
+    - 'db/seeds/*'

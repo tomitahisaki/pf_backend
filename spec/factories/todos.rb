@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :todo do
-    title { "勉強中です" }
-    description { "プログラミング学習です" }
+    title { '勉強中です' }
+    description { 'プログラミング学習です' }
     status { :not_started }
   end
 
