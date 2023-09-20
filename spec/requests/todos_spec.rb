@@ -88,4 +88,39 @@ RSpec.describe 'Todos' do
       end
     end
   end
+
+  describe 'Post /create' do
+    let(:create_todo_params) do
+      {
+        todo: {
+          title: 'テストタイトル 筋トレします',
+          description: 'テスト用ディスクリプション 筋トレします',
+          status: 'not_started',
+        },
+      }
+    end
+
+    context '正常な場合' do
+      before do
+        post todos_path, params: create_todo_params
+      end
+
+      it 'titleが登録されていること' do
+        expect(Todo.last['title']).to eq 'テストタイトル 筋トレします'
+      end
+
+      it 'descriptionが登録されていること' do
+        expect(Todo.last['description']).to eq 'テスト用ディスクリプション 筋トレします'
+      end
+
+      it 'statusが登録されていること' do
+        expect(Todo.last['status']).to eq 'not_started'
+      end
+
+      it 'status確認 200を返すこと' do
+        expect(response).to have_http_status :ok
+      end
+    end
+    # 異常な場合のRSpecは 保留
+  end
 end
