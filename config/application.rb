@@ -39,6 +39,5 @@ module Myapp
     # Skip views, helpers and assets when generating a new resource.
     config.time_zone = ENV.fetch('TZ', nil)
 
-    config.api_only = true
   end
 end
