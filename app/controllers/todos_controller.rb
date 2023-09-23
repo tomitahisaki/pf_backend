@@ -6,19 +6,23 @@ class TodosController < ApplicationController
   end
 
   def show
-    todo = Todo.find(params[:id])
-
-    render json: todo
+    render json: Todo.find(params[:id])
   end
 
   def create
     todo = Todo.new(todo_params)
 
-    if todo.save
-      render json: todo, status: :ok
-    else
-      render json: todo.error, status: :bad_request
-    end
+    todo.save!
+
+    render json: todo, status: :ok
+  end
+
+  def update
+    todo = Todo.find(params[:id])
+
+    todo.update!(todo_params)
+
+    render json: todo, status: :ok
   end
 
   private
