@@ -84,7 +84,7 @@ RSpec.describe 'Todos' do
         expect do
           Todo.create!(title: '筋トレします', description: '上半身を鍛えるために、3分間の筋トレをやります', status: :not_started)
           get todo_path(id: Todo.last.id + 1)
-        end.to raise_error(ActiveRecord::RecordNotFound)        
+        end.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
   end
@@ -121,12 +121,12 @@ RSpec.describe 'Todos' do
         expect(response).to have_http_status :ok
       end
     end
-    
+
     context '正常ではない場合' do
       it 'titleが空白の場合、作成できない' do
         expect do
-          not_create_params = { todo: { title: '', description: 'RubySilverの資格勉強をしています', status: 'not_started'}}
-          post todos_path,params: not_create_params
+          not_create_params = { todo: { title: '', description: 'RubySilverの資格勉強をしています', status: 'not_started' } }
+          post todos_path, params: not_create_params
         end.to raise_error(ActiveRecord::RecordInvalid)
       end
     end
@@ -137,7 +137,7 @@ RSpec.describe 'Todos' do
       it '更新できること' do
         todo = Todo.create!(title: 'Rubyの勉強', description: 'RubySilverの資格勉強をしています', status: 'not_started')
 
-        update_params = { todo: { status: 'done'}}
+        update_params = { todo: { status: 'done' } }
         patch todo_path(id: todo.id),
               params: update_params
 
@@ -150,8 +150,8 @@ RSpec.describe 'Todos' do
       it '更新できないこと' do
         expect do
           Todo.create!(title: 'Rubyの勉強', description: 'RubySilverの資格勉強をしています', status: 'not_started')
-          update_params = { todo: { description: ''}}
-          patch todo_path(id: todo.id),params: update_params
+          update_params = { todo: { description: '' } }
+          patch todo_path(id: todo.id), params: update_params
         end.to raise_error(ActiveRecord::RecordInvalid)
       end
     end

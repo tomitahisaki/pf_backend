@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class TodosController < ApplicationController
-  
   def index
     render json: Todo.all
   end
@@ -14,7 +13,7 @@ class TodosController < ApplicationController
     todo = Todo.new(todo_params)
 
     todo.save!
-    
+
     render json: todo, status: :ok
   end
 
