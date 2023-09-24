@@ -43,7 +43,6 @@ jobs:
         env:
           DB_HOST: 127.0.0.1
         run: |
-          cp config/database.yml.ci config/database.yml
           bundle exec rails db:create
           bundle exec rails db:migrate
 
