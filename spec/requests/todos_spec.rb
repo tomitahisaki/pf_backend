@@ -156,4 +156,28 @@ RSpec.describe 'Todos' do
       end
     end
   end
+
+  describe 'DELETE /destroy' do
+    context '正常に削除される場合' do
+      let!(:todo) { create(:todo) }
+
+      it '削除対象が存在する場合' do
+        expect do
+          delete todo_path(id: todo.id)
+        end.to change(Todo, :count).by(-1)
+
+        expect(response).to have_http_status :ok
+      end
+    end
+
+    context '正常に削除されない場合' do
+      let!(:todo) { create(:todo) }
+
+      it '削除対象が存在しない場合、例外が発生する' do
+        expect do
+          delete todo_path(id: todo.id + 1)
+        end.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+  end
 end
