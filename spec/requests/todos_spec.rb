@@ -159,9 +159,9 @@ RSpec.describe 'Todos' do
 
   describe 'DELETE /destroy' do
     context '正常に削除される場合' do
-      let!(:todo){ create(:todo)}
-      it '削除対象が存在する場合' do
+      let!(:todo) { create(:todo) }
 
+      it '削除対象が存在する場合' do
         expect do
           delete todo_path(id: todo.id)
         end.to change(Todo, :count).by(-1)
@@ -171,7 +171,8 @@ RSpec.describe 'Todos' do
     end
 
     context '正常に削除されない場合' do
-      let!(:todo){ create(:todo) }
+      let!(:todo) { create(:todo) }
+
       it '削除対象が存在しない場合、例外が発生する' do
         expect do
           delete todo_path(id: todo.id + 1)
