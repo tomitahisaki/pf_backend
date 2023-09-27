@@ -40,8 +40,7 @@ jobs:
       # migrationの実施
       - name: DB migration
         env:
-          MYSQL_DATABASE: myapp_test
-          DB_HOST: db-test
+          DB_HOST: 127.0.0.1
         run: |
           bundle exec rails db:create
           bundle exec rails db:migrate
