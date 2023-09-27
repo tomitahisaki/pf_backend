@@ -1,9 +1,9 @@
 class TestSamplePageJob < ApplicationJob
   queue_as :default
 
-  def perform(*args)
+  def perform(*_args)
     # Do something later
 
-    puts "job is done"
+    Rails.logger.debug "job is done"
   end
 end

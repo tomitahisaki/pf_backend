@@ -41,7 +41,7 @@ gem 'rack-cors'
 # env
 gem 'dotenv-rails'
 
-# sidekiq 
+# sidekiq
 gem 'sidekiq'
 
 group :development, :test do
