@@ -28,6 +28,9 @@ development:
 test:
   <<: *default
   database: myapp_test
+  # docker compose 設定
+  # host: db_test
+  # ci用
   password:
   host: 127.0.0.1
 
