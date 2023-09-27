@@ -36,10 +36,10 @@ http://localhost:3010
 $ docker compose exec web bundle install
 
 # 初回データ作成
-$ docker compose exec web rails db:create
+$ docker compose exec web rails db:create RAILS_ENV=development
 
 # migrationファイル追加
-$ docker compose exec web rails db:migrate
+$ docker compose exec web rails db:migrate RAILS_ENV=development
 
 # rails console使用時
 $ docker compose exec web rails c

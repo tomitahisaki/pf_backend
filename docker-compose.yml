@@ -8,19 +8,20 @@ services:
     ports:
       - "3010:3010"
     depends_on:
-      - db
+      - db-develop
+      - db-test
     # コンテナ起動を続けるため
     tty: true
     #標準出力とエラー出力を結びつける
     stdin_open: true
-  db:
+  db-develop:
     image: mysql
     # M1 CPUのためにplatform指定
     platform: linux/amd64
     # DBのレコードが日本語だと文字化けするので、utf8をセットする
     command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
     volumes:
-      - db-volume:/var/lib/mysql
+      - db-develop-volume:/var/lib/mysql
     # 環境変数
     environment:
       MYSQL_ROOT_PASSWORD: password
@@ -28,7 +29,7 @@ services:
       TZ: "Asia/Tokyo"
     ports:
       - "3306:3306"
-  db_test:
+  db-test:
     image: mysql
     # M1 CPUのためにplatform指定
     platform: linux/amd64
@@ -44,5 +45,6 @@ services:
     ports:
       - "3307:3307"
 volumes:
-  db-volume:
+  db-develop-volume:
   db-test-volume:
+

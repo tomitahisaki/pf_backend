@@ -16,7 +16,7 @@ jobs:
       db:
         image: mysql
         ports:
-          - 3307:3307
+          - 3306:3306
         env:
           LANG: "ja_JP.UTF-8"
           MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
@@ -40,7 +40,8 @@ jobs:
       # migrationの実施
       - name: DB migration
         env:
-          DB_HOST: db_test
+          MYSQL_DATABASE: myapp_test
+          DB_HOST: db-test
         run: |
           bundle exec rails db:create
           bundle exec rails db:migrate
