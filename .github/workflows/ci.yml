@@ -13,14 +13,13 @@ jobs:
       RAILS_ENV: test
     
     services:
-      db:
+      db_test:
         image: mysql
         ports:
           - 3307:3307
         env:
           LANG: "ja_JP.UTF-8"
           MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-          BIND_ADDRESS: 0.0.0.0
           MYSQL_DATABASE: myapp_test
         options: >-
           --health-cmd "mysqladmin ping"
