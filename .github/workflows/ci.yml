@@ -41,7 +41,7 @@ jobs:
       # migrationの実施
       - name: DB migration
         env:
-          DB_HOST: 127.0.0.1
+          DB_HOST: db
         run: |
           bundle exec rails db:create
           bundle exec rails db:migrate
