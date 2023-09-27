@@ -21,6 +21,7 @@ jobs:
           LANG: "ja_JP.UTF-8"
           MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
           BIND_ADDRESS: 0.0.0.0
+          MYSQL_DATABASE: myapp_test
         options: >-
           --health-cmd "mysqladmin ping"
           --health-interval 10s 
@@ -40,8 +41,8 @@ jobs:
 
       # migrationの実施
       - name: DB migration
-        # env:
-          # DB_HOST: 127.0.0.1
+        env:
+          MYSQL_DATABASE: myapp_test
         run: |
           bundle exec rails db:create
           bundle exec rails db:migrate
