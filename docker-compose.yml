@@ -10,6 +10,7 @@ services:
     depends_on:
       - db-develop
       - db-test
+      - redis
     # コンテナ起動を続けるため
     tty: true
     #標準出力とエラー出力を結びつける
@@ -43,8 +44,7 @@ services:
       MYSQL_DATABASE: myapp_test
       TZ: "Asia/Tokyo"
     ports:
-      - "3307:3307"
-    
+      - "3307:3307"    
   redis:
     image: redis
     volumes:

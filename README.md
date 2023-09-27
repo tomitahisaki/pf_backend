@@ -30,6 +30,9 @@ $ docker compose run --rm {サービス名} {コマンド}
 ## Webサーバーへのアクセス
 http://localhost:3010
 
+## Sidekiqへのアクセス
+http://localhost:3010/sidekiq
+
 ## Rails コマンド一覧
 ```sh
 # gemfile追加
